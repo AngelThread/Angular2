@@ -24,7 +24,7 @@ import { User } from "./user";
                     <input class="form-control" formControlName="email" type="text" [(ngModel)]="user.email">
                     <div *ngIf="email.errors">
                     <div *ngIf="email.errors.required && email.dirty " class="alert alert-danger">Email is required</div>
-                    <div *ngIf="email.errors.emailValidator && email.dirty " class="alert alert-danger">Email is not valid!</div>
+                    <div *ngIf="email.errors.emailValidator " class="alert alert-danger">Email is not valid!</div>
                     </div>
                     
                 </div>
@@ -52,7 +52,7 @@ import { User } from "./user";
                 <input [(ngModel)]="user.address.zipcode" class="form-control"  formControlName="zipcode" type="text">
                 </div>
             </fieldset>
-            <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid" (click)="addUser()">Save</button>
+            <button class="btn btn-primary" type="submit" [disabled]="(signupForm.invalid)" (click)="addUser()">Save</button>
         </form>
             </div>
         </div>

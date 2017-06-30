@@ -24,7 +24,7 @@ export class UserService {
 
     }
 
-     getUserById(userId): Observable<Object> {
+     getUserById(userId): Observable<User> {
         let user;
         return this.http.get(this.userURL+"/"+userId).map(
             res => {
