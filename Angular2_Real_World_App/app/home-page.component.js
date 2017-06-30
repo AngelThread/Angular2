@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var user_service_1 = require("./user.service");
+var router_1 = require('@angular/router');
 var HomePageComponent = (function () {
-    function HomePageComponent(_userService) {
+    function HomePageComponent(_userService, _router) {
         this._userService = _userService;
+        this._router = _router;
         this.users = [];
     }
     HomePageComponent.prototype.ngOnInit = function () {
@@ -28,12 +30,22 @@ var HomePageComponent = (function () {
         });
         console.log("X");
     };
+    HomePageComponent.prototype.editClicked = function () {
+        this._router.navigate(['/users', 2]);
+    };
+    HomePageComponent.prototype.deleteUser = function (user) {
+        console.log("Id:" + user);
+        var deleted;
+        var filtered = this.users.filter(function (element) { deleted = user; return element.name !== user.name; });
+        this.users = filtered;
+        console.log(deleted);
+    };
     HomePageComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n        <h1>Users</h1>\n        <p>\n            <a class=\"btn btn-primary\" href=\"/users/new\">Add user</a>\n        </p>\n        <table class=\"table table-bordered\">\n            <thead>\n            <tr>\n                <th>Name</th>\n                <th>Email</th>\n                <th>Edit</th>\n                <th>Delete</th>\n\n            </tr>\n            </thead>\n            <tbody>\n            <tr *ngFor=\"let user of users\">\n                <td>{{user?.name}}</td>\n                <td>{{user?.email}}</td>\n                <td><i class=\" glyphicon glyphicon-pencil \"></i></td>\n                <td><i class=\" glyphicon glyphicon-remove \"></i></td>\n\n            </tr>\n            </tbody>\n        </table>\n    "
+            template: "\n        <h1>Users</h1>\n        <p>\n            <a class=\"btn btn-primary\" href=\"/users\">Add user</a>\n        </p>\n        <table class=\"table table-bordered\">\n            <thead>\n            <tr>\n                <th>Name</th>\n                <th>Email</th>\n                <th>Edit</th>\n                <th>Delete</th>\n\n            </tr>\n            </thead>\n            <tbody>\n            <tr *ngFor=\"let user of users\">\n                <td>{{user?.name}}</td>\n                <td>{{user?.email}}</td>\n                <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><i \n                class=\" glyphicon glyphicon-pencil \" [routerLink]=\"['/users',user.id]\"  (click)=\"editClicked()\"></i></td>\n                <td><i class=\" glyphicon glyphicon-remove \" (click)=\"deleteUser(user)\"></i></td>\n            </tr>\n            </tbody>\n        </table>\n    "
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService])
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], HomePageComponent);
     return HomePageComponent;
 }());

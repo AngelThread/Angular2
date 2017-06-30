@@ -7,7 +7,8 @@ import {UserFormComponent} from './user-form.component';
 import{PreventUnsavedChangesGuard} from './prevent-unsaved-changes-guard.service'
 
 export const routingDef = RouterModule.forRoot([
-    {path:'users/new',component:UserFormComponent, canDeactivate:[PreventUnsavedChangesGuard]},
+    {path:'users/:id',component:UserFormComponent, canDeactivate:[PreventUnsavedChangesGuard]},
+    {path:'users',component:UserFormComponent, canDeactivate:[PreventUnsavedChangesGuard]},
     {path:'',component:HomePageComponent},
     {path:'**',component:HomePageComponent}
 ]);

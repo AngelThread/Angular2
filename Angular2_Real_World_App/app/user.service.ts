@@ -23,9 +23,28 @@ export class UserService {
         ).catch(this.handleError);
 
     }
+
+     getUserById(userId): Observable<Object> {
+        let user;
+        return this.http.get(this.userURL+"/"+userId).map(
+            res => {
+                user = res.json();
+                return user;
+            }
+        ).catch(this.handleError);
+
+    }
      postUser(data){
         let user: User[];
          return this.http.post(this.userURL, data).map(res => {
+                user = res.json();
+                return user;
+            }).catch(this.handleError);
+
+    }
+     updateUser(data, id){
+        let user: User[];
+         return this.http.put(this.userURL+"/"+id, data).map(res => {
                 user = res.json();
                 return user;
             }).catch(this.handleError);

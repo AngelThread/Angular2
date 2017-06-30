@@ -25,9 +25,23 @@ var UserService = (function () {
             return user;
         }).catch(this.handleError);
     };
+    UserService.prototype.getUserById = function (userId) {
+        var user;
+        return this.http.get(this.userURL + "/" + userId).map(function (res) {
+            user = res.json();
+            return user;
+        }).catch(this.handleError);
+    };
     UserService.prototype.postUser = function (data) {
         var user;
         return this.http.post(this.userURL, data).map(function (res) {
+            user = res.json();
+            return user;
+        }).catch(this.handleError);
+    };
+    UserService.prototype.updateUser = function (data, id) {
+        var user;
+        return this.http.put(this.userURL + "/" + id, data).map(function (res) {
             user = res.json();
             return user;
         }).catch(this.handleError);
