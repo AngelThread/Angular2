@@ -23,6 +23,7 @@ import { Post } from "./post";
   <div class="panel-body">
     {{selectedPost?.body}}
   </div>
+  <comment [id]="selectedPost.id"></comment>
 </div>
 </div>
 </div>
@@ -71,6 +72,17 @@ export class PostsPageComponent implements OnInit {
     selected(post) {
 
         this.selectedPost = post;
+        this._postService.getComments(post.id).subscribe(
+            posts => {
+                this.selectedPost.commnets = posts;
+                console.log(this.selectedPost.commnets)
+
+            },
+            error => {
+                console.log(error);
+            }, () => {
+                this.isLoading = false;
+            });
 
     }
 

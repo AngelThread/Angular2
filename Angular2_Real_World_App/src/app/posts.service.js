@@ -16,11 +16,16 @@ require('rxjs/add/operator/map');
 var PostService = (function () {
     function PostService(http) {
         this.http = http;
-        this.userURL = 'http://jsonplaceholder.typicode.com/posts';
+        this.postsUrl = 'http://jsonplaceholder.typicode.com/posts';
     }
     PostService.prototype.getPosts = function () {
         var posts;
-        return this.http.get(this.userURL).map(function (res) {
+        return this.http.get(this.postsUrl).map(function (res) {
+            return res.json();
+        }).catch(this.handleError);
+    };
+    PostService.prototype.getComments = function (id) {
+        return this.http.get(this.postsUrl + "/" + id + "/" + "comments").map(function (res) {
             return res.json();
         }).catch(this.handleError);
     };

@@ -25,13 +25,14 @@ var user_validator_1 = require('./user-validator');
 var prevent_unsaved_changes_guard_service_1 = require('./prevent-unsaved-changes-guard.service');
 var posts_component_1 = require("./posts.component");
 var posts_service_1 = require("./posts.service");
+var comments_component_1 = require("./comments.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, app_routing_1.routingDef, http_1.HttpModule, http_1.JsonpModule],
-            declarations: [app_component_1.AppComponent, navbar_component_1.NavBarComponent, not_found_component_1.NotFoundComponent, home_page_component_1.HomePageComponent, table_component_1.TableComponent, user_form_component_1.UserFormComponent, posts_component_1.PostsPageComponent],
+            declarations: [app_component_1.AppComponent, comments_component_1.CommentsComponent, navbar_component_1.NavBarComponent, not_found_component_1.NotFoundComponent, home_page_component_1.HomePageComponent, table_component_1.TableComponent, user_form_component_1.UserFormComponent, posts_component_1.PostsPageComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [user_service_1.UserService, posts_service_1.PostService, forms_2.FormBuilder, user_validator_1.EmailValidator, prevent_unsaved_changes_guard_service_1.PreventUnsavedChangesGuard]
         }), 

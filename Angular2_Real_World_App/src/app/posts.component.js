@@ -28,12 +28,21 @@ var PostsPageComponent = (function () {
         });
     };
     PostsPageComponent.prototype.selected = function (post) {
+        var _this = this;
         this.selectedPost = post;
+        this._postService.getComments(post.id).subscribe(function (posts) {
+            _this.selectedPost.commnets = posts;
+            console.log(_this.selectedPost.commnets);
+        }, function (error) {
+            console.log(error);
+        }, function () {
+            _this.isLoading = false;
+        });
     };
     PostsPageComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n<div class=\"row\">\n<div class=\"col-md-6\">\n<i *ngIf=\"isLoading\" class=\"fa fa-spinner fa-spin fa-3x\"></i>\n<ul class=\"list-group\">\n  <li *ngFor=\"let post of posts\" class=\"list-group-item\" (click)=\"selected(post)\">{{post?.title}}</li>\n</ul>  \n</div>\n<div class=\"col-md-6\">\n\n \n<div class=\"panel panel-default\" *ngIf=\" selectedPost !== null\">\n  <div class=\"panel-heading\">\n    <h3 class=\"panel-title\">{{selectedPost?.title}}</h3>\n  </div>\n  <div class=\"panel-body\">\n    {{selectedPost?.body}}\n  </div>\n</div>\n</div>\n</div>\n\n\n    ",
+            template: "\n<div class=\"row\">\n<div class=\"col-md-6\">\n<i *ngIf=\"isLoading\" class=\"fa fa-spinner fa-spin fa-3x\"></i>\n<ul class=\"list-group\">\n  <li *ngFor=\"let post of posts\" class=\"list-group-item\" (click)=\"selected(post)\">{{post?.title}}</li>\n</ul>  \n</div>\n<div class=\"col-md-6\">\n\n \n<div class=\"panel panel-default\" *ngIf=\" selectedPost !== null\">\n  <div class=\"panel-heading\">\n    <h3 class=\"panel-title\">{{selectedPost?.title}}</h3>\n  </div>\n  <div class=\"panel-body\">\n    {{selectedPost?.body}}\n  </div>\n  <comment [id]=\"selectedPost.id\"></comment>\n</div>\n</div>\n</div>\n\n\n    ",
             styles: [
                 "            \n        li\t{\tcursor:\tdefault;\t}\n\t    li:hover\t{\tbackground:\t#ecf0f1;\t}\t\n        list-group-item.active,\t\n        list-group-item.active:hover,\t\n        list-group-item.active:focus\t\n        {\t\n        background-color:\t#ecf0f1;\n\t    border-color:\t#ecf0f1;\t\n\t    color:\t#2c3e50;}\n                \n        ",
             ]

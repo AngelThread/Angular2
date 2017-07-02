@@ -9,7 +9,7 @@ import { Post } from "./post";
 
 @Injectable()
 export class PostService {
-   private userURL = 'http://jsonplaceholder.typicode.com/posts';
+   private postsUrl = 'http://jsonplaceholder.typicode.com/posts';
 
     constructor(private http: Http) {
     }
@@ -17,12 +17,20 @@ export class PostService {
 
  getPosts(){
         let posts: Post[];
-        return this.http.get(this.userURL).map(
+        return this.http.get(this.postsUrl).map(
             res => {
                 return res.json();
             }
         ).catch(this.handleError);
 
+    }
+
+    getComments(id){
+        return this.http.get(this.postsUrl+"/"+id+"/"+"comments").map(
+            res => {
+                return res.json();
+            }
+        ).catch(this.handleError);
     }
  private handleError (error: Response | any) {
         // In a real world app, you might use a remote logging infrastructure
