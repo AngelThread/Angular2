@@ -8,13 +8,13 @@ import {routingDef} from './app.routing';
 import {HomePageComponent} from './home-page.component'
 import {TableComponent} from "./table.component";
 import { HttpModule ,JsonpModule} from '@angular/http';
-import {UserService} from './user.service';
-import {UserFormComponent} from './user-form.component';
+import {UserService} from './users/user.service';
+import {UserFormComponent} from './users/user-form.component';
 import {FormBuilder} from '@angular/forms';
-import {EmailValidator} from './user-validator'
+import {EmailValidator} from './users/user-validator'
 import{PreventUnsavedChangesGuard} from './prevent-unsaved-changes-guard.service'
-import { PostsPageComponent } from "./posts.component";
-import { PostService } from "./posts.service";
+import { PostsPageComponent } from "./posts/posts.component";
+import { PostService } from "./posts/posts.service";
 import { CommentsComponent } from "./comments.component";
 import { PaginationComponent } from "./pagination.component";
 

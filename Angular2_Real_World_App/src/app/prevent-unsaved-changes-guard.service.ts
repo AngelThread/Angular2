@@ -1,5 +1,5 @@
 
-import { UserFormComponent } from './user-form.component';
+import { UserFormComponent } from './users/user-form.component';
 import { CanDeactivate } from "@angular/router";
 
 

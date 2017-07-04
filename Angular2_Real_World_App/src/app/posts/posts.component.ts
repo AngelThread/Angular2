@@ -1,7 +1,7 @@
 import { OnInit, Component, OnChanges, SimpleChanges } from "@angular/core";
 import { PostService } from "./posts.service";
 import { Post } from "./post";
-import { UserService } from "./user.service";
+import { UserService } from "../users/user.service";
 
 
 @Component({

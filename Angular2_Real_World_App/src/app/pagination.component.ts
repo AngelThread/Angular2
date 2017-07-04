@@ -1,7 +1,7 @@
 
 
 import { OnInit, OnChanges, EventEmitter, Input, Component, Output } from "@angular/core";
-import { PostService } from "./posts.service";
+import { PostService } from "./posts/posts.service";
 
 @Component({
     selector: 'pagination-comp',

@@ -1,7 +1,7 @@
 
 
 import { OnInit, OnChanges, SimpleChanges, Input, Component } from "@angular/core";
-import { PostService } from "./posts.service";
+import { PostService } from "./posts/posts.service";
 
 @Component({
     selector: 'comment',
