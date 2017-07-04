@@ -16,10 +16,11 @@ import{PreventUnsavedChangesGuard} from './prevent-unsaved-changes-guard.service
 import { PostsPageComponent } from "./posts.component";
 import { PostService } from "./posts.service";
 import { CommentsComponent } from "./comments.component";
+import { PaginationComponent } from "./pagination.component";
 
 @NgModule({
   imports:      [ BrowserModule , FormsModule,ReactiveFormsModule,routingDef,HttpModule,JsonpModule],
-  declarations: [ AppComponent , CommentsComponent, NavBarComponent,NotFoundComponent,HomePageComponent,TableComponent,UserFormComponent,PostsPageComponent],
+  declarations: [ AppComponent , CommentsComponent, PaginationComponent,NavBarComponent,NotFoundComponent,HomePageComponent,TableComponent,UserFormComponent,PostsPageComponent],
   bootstrap:    [ AppComponent ],
   providers:[UserService,PostService,FormBuilder,EmailValidator,PreventUnsavedChangesGuard]
 })

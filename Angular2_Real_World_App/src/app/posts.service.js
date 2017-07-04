@@ -29,6 +29,12 @@ var PostService = (function () {
             return res.json();
         }).catch(this.handleError);
     };
+    PostService.prototype.getUsersPosts = function (userId) {
+        var posts;
+        return this.http.get(this.postsUrl + "?userId=" + userId).map(function (res) {
+            return res.json();
+        }).catch(this.handleError);
+    };
     PostService.prototype.handleError = function (error) {
         // In a real world app, you might use a remote logging infrastructure
         var errMsg;
